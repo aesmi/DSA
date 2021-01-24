@@ -4,11 +4,10 @@
 // Delete = O(logn)
 
 interface QElement {
-  element: any;
   priority: number;
 }
 
-class QElement {
+class QElement implements QElement {
   element: any;
   priority: number;
   constructor(element: any, priority: number) {
