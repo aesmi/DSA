@@ -1,47 +1,50 @@
-class Stack {
-  collection: any;
-  length: number;
-  top: number;
+class Stack<T> {
+  private _collection: T;
+  private _length: number;
+  private _top: number;
   constructor() {
-    [this.length, this.collection]=[0,{}];
-    for (let key in arguments){
+    [this._length, this._collection] = [0, <T>{}];
+    for (let key in arguments) {
       // put into map to optimize access, delete time
-      this.collection[key] = arguments[key];
+      this._collection[key] = arguments[key];
       length++;
     }
-    this.top = this.collection.length - 1;
+    this._top = this._length - 1;
   }
-  isEmpty():boolean{
-    return this.collection.length === 0;
+  isEmpty(): boolean {
+    return this._length === 0;
   }
-  print():void{
-    console.log(this.collection);
+  print(): void {
+    console.log(this._collection);
   }
-  push(element:any){
-    this.collection[this.length] = element;
-    this.length++;
+  push(element: any) {
+    this._collection[this._length] = element;
+    this._length++;
     return element;
   }
-  pop():Error|(()=>any){
-    if(this.isEmpty()){
+  pop(): Error | (() => any) {
+    if (this.isEmpty()) {
       return Error("Empty Stack");
     } else {
-      const removalTarget = this.collection[this.length-1];
-      delete this.collection[this.length-1];
-      this.length--;
+      const removalTarget = this._collection[this._length - 1];
+      delete this._collection[this._length - 1];
+      this._length--;
       return removalTarget;
     }
   }
-  peek(i:number): Error | (() => any){
-    this.isEmpty()?Error("Stack Empty"):this.collection[i];
+  peek(i: number): T {
+    if (this.isEmpty()) throw new Error("Stack Empty");
+    return this._collection[i];
   }
-  bottom():any{
-    this.collection[0];
+  bottom(): T {
+    return this._collection[0];
   }
-  lid():any{
-    this.collection[this.top];
+  lid(): T {
+    return this._collection[this._top];
   }
-  clear():void{
-    this.collection.clear();
+  clear(): void {
+    for(let key in this._collection){
+      delete this._collection[key];
+    }
   }
 }
