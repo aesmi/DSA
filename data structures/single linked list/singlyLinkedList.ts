@@ -1,4 +1,4 @@
-class NewNode<T>{
+class NewNode<T> {
   private _elem: T;
   public _next: T;
 
@@ -78,8 +78,8 @@ class LinkedList {
   }
 
   public toString() {
-    var current = this._head;
-    var str = "";
+    let current = this._head;
+    let str = "";
     while (current) {
       str += JSON.stringify(current.elem); //output is undefinedundefinedundefined
       // str += JSON.stringify(current);

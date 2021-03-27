@@ -8,7 +8,7 @@ struct Node
     struct Node *next;
 };
 
-struct Node *head; // global variable can be accessed anywhere
+struct Node *head; // global letiable can be accessed anywhere
 int main()
 {
     head = NULL; // head pointer empty, list empty
