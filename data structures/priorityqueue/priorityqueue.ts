@@ -28,7 +28,7 @@ class PriorityQueue<QElement> {
     let qElement = new QElement(element, priority);
     let contain = false;
     // iterating through the entire item array to add element at the correct location of the Queue
-    for (var i = 0; i < this.collection.length; i++) {
+    for (let i = 0; i < this.collection.length; i++) {
       //checks to see new element priority is lower than iterated item priority
       if (this.collection[i].priority > qElement.priority) {
         // Once the correct location is found it is
